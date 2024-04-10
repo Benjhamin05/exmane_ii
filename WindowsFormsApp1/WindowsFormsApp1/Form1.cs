@@ -36,7 +36,26 @@ namespace WindowsFormsApp1
             perComun.idTraba = (int)txtIdTraba.Value;
             perComun.nombre = txtNombre.Text;
             perComun.apellido = txtApellido.Text;
-            perComun.sueldo_p = Convert.ToDecimal(txtSueldo.Text);
+
+            decimal sueldo = Convert.ToDecimal(txtSueldo.Text);
+            if (sueldo <= 1000)
+            {
+                sueldo *= 1.1m;
+            }
+            else if (sueldo > 1000 && sueldo <= 2000)
+            {
+                sueldo *= 1.2m;
+            }
+            else if (sueldo > 2000 && sueldo <= 4000)
+            {
+                sueldo *= 1.3m;
+            }
+            else
+            {
+                sueldo *= 1.4m;
+            }
+            perComun.sueldo_p = sueldo;
+
             perComun.categoria = txtCategoria.Text;
 
             MessageBox.Show(perComun.ToString());
